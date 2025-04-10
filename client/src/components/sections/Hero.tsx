@@ -1,12 +1,59 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { fadeIn, slideUp } from "@/lib/animations";
+import { glowEffects } from "@/lib/gradients";
+import { Brain } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-24 overflow-hidden bg-[#121212]">
+    <section id="home" className="relative pt-36 pb-28 overflow-hidden bg-[#121212]">
+      {/* Background pattern and overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(45,26,69,0.4)] to-[rgba(26,26,26,0.05)]"></div>
+      
+      {/* Animated digital brain background */}
+      <div className="absolute top-[15%] right-[10%] opacity-10 w-[500px] h-[500px]">
+        <svg className="w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path 
+            fill="none" 
+            stroke="url(#brain-gradient)" 
+            strokeWidth="1" 
+            d="M100,21 C149,21 190,61 190,110 C190,159 149,199 100,199 C51,199 10,159 10,110 C10,61 51,21 100,21 Z"
+            className="animate-pulse-slow"
+          />
+          <path 
+            fill="none" 
+            stroke="url(#brain-gradient2)" 
+            strokeWidth="0.5" 
+            d="M100,40 C138,40 169,71 169,110 C169,148 138,179 100,179 C62,179 31,148 31,110 C31,71 62,40 100,40 Z"
+            className="animate-pulse-slow"
+          />
+          <path 
+            fill="none" 
+            stroke="#7928CA" 
+            strokeWidth="0.3" 
+            strokeDasharray="5,3"
+            d="M100,21 C60,50 60,80 50,110 C50,140 60,170 100,199"
+          />
+          <path 
+            fill="none" 
+            stroke="#FF6B2B" 
+            strokeWidth="0.3" 
+            strokeDasharray="5,3"
+            d="M100,21 C140,50 140,80 150,110 C150,140 140,170 100,199"
+          />
+          <defs>
+            <linearGradient id="brain-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF6B2B" />
+              <stop offset="100%" stopColor="#7928CA" />
+            </linearGradient>
+            <linearGradient id="brain-gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#7928CA" />
+              <stop offset="100%" stopColor="#0B6EFD" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center">
@@ -21,7 +68,7 @@ export default function Hero() {
             </span>
             <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 text-white">
               Your Advertising Agency with a{' '}
-              <span className="bg-gradient-to-r from-[#FF6B2B] to-[#0B6EFD] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-[#FF6B2B] via-[#FF8B4B] to-[#7928CA] bg-clip-text text-transparent">
                 Tech Boutique Touch
               </span>
             </h1>
@@ -30,7 +77,7 @@ export default function Hero() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button 
-                className="px-8 py-6 bg-gradient-to-r from-[#FF6B2B] to-[#0B6EFD] hover:shadow-[0_0_15px_rgba(255,107,43,0.6)] rounded-full transition-all duration-300 hover:-translate-y-0.5"
+                className={`relative px-8 py-6 bg-gradient-to-r from-[#FF6B2B] to-[#7928CA] rounded-full transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_20px_rgba(255,107,43,0.1)] hover:shadow-[0_0_25px_rgba(255,107,43,0.6)] group overflow-hidden`}
                 onClick={() => {
                   const auditSection = document.getElementById("audit");
                   if (auditSection) {
@@ -38,11 +85,12 @@ export default function Hero() {
                   }
                 }}
               >
-                Get a Free Strategy Audit
+                <span className="relative z-10">Get a Free Strategy Audit</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-[#7928CA] to-[#FF6B2B] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
               </Button>
               <Button 
                 variant="outline" 
-                className="px-8 py-6 rounded-full border-gray-600 hover:border-[#0B6EFD] hover:text-[#0B6EFD]"
+                className="px-8 py-6 rounded-full border-gray-600 hover:border-[#0B6EFD] hover:text-[#0B6EFD] transition-all duration-300"
                 onClick={() => {
                   const servicesSection = document.getElementById("services");
                   if (servicesSection) {
