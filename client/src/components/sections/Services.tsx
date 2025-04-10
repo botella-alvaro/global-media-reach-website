@@ -16,7 +16,7 @@ import { useEffect } from "react";
 export default function Services() {
   const services = [
     {
-      icon: <ChartLine size={32} className="text-gradient-orange-purple" />,
+      icon: <ChartLine size={32} className="text-white" />,
       badge: "STRATEGY",
       badgeColor: "from-[#F05A28] to-[#8E2DE2]",
       title: "Media Strategy, Buying & Advisory",
@@ -28,7 +28,7 @@ export default function Services() {
       ]
     },
     {
-      icon: <Code size={32} className="text-gradient-purple-blue" />,
+      icon: <Code size={32} className="text-white" />,
       badge: "TECH",
       badgeColor: "from-[#8E2DE2] to-[#F05A28]",
       title: "Proprietary Technology (AdBid)",
@@ -40,7 +40,7 @@ export default function Services() {
       ]
     },
     {
-      icon: <Monitor size={32} className="text-gradient-orange-blue" />,
+      icon: <Monitor size={32} className="text-white" />,
       badge: "DOOH",
       badgeColor: "from-[#F05A28] to-[#8E2DE2]",
       title: "DOOH for Global Brands",

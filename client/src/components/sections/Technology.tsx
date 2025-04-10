@@ -6,7 +6,7 @@ import { gradients, glowEffects } from "@/lib/gradients";
 export default function Technology() {
   const techFeatures = [
     {
-      icon: <Target className="text-gradient-orange-purple" size={24} />,
+      icon: <Target className="text-white" size={24} />,
       color: "from-[#F05A28] to-[#8E2DE2]",
       title: "Ad Formats",
       description: "Comprehensive support for all digital ad formats including display, video, native, and interactive ads.",
@@ -15,7 +15,7 @@ export default function Technology() {
       delay: 0.1
     },
     {
-      icon: <PieChart className="text-gradient-purple-blue" size={24} />,
+      icon: <PieChart className="text-white" size={24} />,
       color: "from-[#8E2DE2] to-[#4A00E0]",
       title: "KPIs",
       description: "Track and optimize toward custom KPIs including viewability, engagement, conversions, and ROAS.",
@@ -24,7 +24,7 @@ export default function Technology() {
       delay: 0.2
     },
     {
-      icon: <Crosshair className="text-gradient-orange-blue" size={24} />,
+      icon: <Crosshair className="text-white" size={24} />,
       color: "from-[#F05A28] to-[#4A00E0]",
       title: "Targeting",
       description: "Precision targeting options including demographic, behavioral, contextual, and lookalike audiences.",
@@ -33,7 +33,7 @@ export default function Technology() {
       delay: 0.3
     },
     {
-      icon: <Database className="text-gradient-purple-blue" size={24} />,
+      icon: <Database className="text-white" size={24} />,
       color: "from-[#8E2DE2] to-[#4A00E0]",
       title: "Data & Audiences",
       description: "Access to premium data sources and audience segments to reach your ideal customers.",
@@ -42,7 +42,7 @@ export default function Technology() {
       delay: 0.4
     },
     {
-      icon: <BarChart3 className="text-gradient-orange-purple" size={24} />,
+      icon: <BarChart3 className="text-white" size={24} />,
       color: "from-[#F05A28] to-[#8E2DE2]",
       title: "Analytics",
       description: "Real-time reporting and analytics dashboard with custom visualizations and insights.",
