@@ -6,9 +6,9 @@ import { gradients, glowEffects } from "@/lib/gradients";
 export default function Hero() {
   return (
     <section id="home" className="relative pt-36 pb-28 overflow-hidden bg-[#121212]">
-      {/* Background pattern and overlay - more subtle */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(142,45,226,0.2)] to-[rgba(26,26,26,0.05)]"></div>
+      {/* Background pattern and overlay - even more subtle (15-20% opacity) */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(142,45,226,0.15)] to-[rgba(26,26,26,0.05)]"></div>
       
       {/* Polygonal Brain Visual */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] opacity-15 pointer-events-none">
@@ -152,7 +152,7 @@ export default function Hero() {
             </span>
             <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 text-white">
               Your Advertising Agency with a{' '}
-              <span className="bg-gradient-to-br from-[#F05A28] via-[#FF8B4B] to-[#8E2DE2] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">
                 Tech Boutique Touch
               </span>
             </h1>

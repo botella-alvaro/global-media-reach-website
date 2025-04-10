@@ -17,7 +17,7 @@ export default function Services() {
   const services = [
     {
       icon: <ChartLine size={32} className="text-gradient-orange-purple" />,
-      badge: "Strategy",
+      badge: "STRATEGY",
       badgeColor: "from-[#F05A28] to-[#8E2DE2]",
       title: "Media Strategy, Buying & Advisory",
       description: "Our team of media experts develops custom strategies to optimize your advertising budget and reach the right audiences at the right time.",
@@ -29,8 +29,8 @@ export default function Services() {
     },
     {
       icon: <Code size={32} className="text-gradient-purple-blue" />,
-      badge: "Tech",
-      badgeColor: "from-[#8E2DE2] to-[#4A00E0]",
+      badge: "TECH",
+      badgeColor: "from-[#8E2DE2] to-[#F05A28]",
       title: "Proprietary Technology (AdBid)",
       description: "Our cutting-edge AdBid platform leverages AI and machine learning to optimize campaign performance and maximize ROI.",
       features: [
@@ -42,7 +42,7 @@ export default function Services() {
     {
       icon: <Monitor size={32} className="text-gradient-orange-blue" />,
       badge: "DOOH",
-      badgeColor: "from-[#F05A28] to-[#4A00E0]",
+      badgeColor: "from-[#F05A28] to-[#8E2DE2]",
       title: "DOOH for Global Brands",
       description: "Leverage Digital Out-of-Home advertising to create impactful experiences that connect with your audience in physical spaces.",
       features: [
@@ -186,9 +186,13 @@ interface ServiceProps {
 function ServiceCard({ service, index }: ServiceProps) {
   return (
     <motion.div 
-      className="relative bg-[#222222] rounded-2xl p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] overflow-hidden group h-full"
+      className="relative bg-[#222222] rounded-2xl p-8 transition-all duration-500 overflow-hidden group h-full transform-gpu perspective-[1000px]"
       whileHover={{
         scale: 1.03,
+        rotateY: -5,
+        rotateX: 5,
+        translateZ: 20,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
         transition: { duration: 0.3 }
       }}
     >
