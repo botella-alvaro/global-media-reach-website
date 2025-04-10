@@ -51,7 +51,7 @@ export default function Technology() {
       delay: 0.5
     },
     {
-      icon: <Share2 className="text-gradient-orange-blue" size={24} />,
+      icon: <Share2 className="text-white" size={24} />,
       color: "from-[#F05A28] to-[#4A00E0]",
       title: "Integrations",
       description: "Seamless integrations with major ad platforms, analytics tools, and marketing automation systems.",
@@ -189,7 +189,7 @@ export default function Technology() {
                     whileHover={{ scale: 1.05 }}
                   >
                     <div 
-                      className={`relative bg-[#222222] rounded-xl p-4 border border-gray-800 hover:shadow-[0_0_25px_rgba(142,45,226,0.3)] transition-all duration-300 group ${glowEffects.cardPulse}`}
+                      className={`relative bg-[#1A1A1A] rounded-xl p-4 border border-gray-800 hover:shadow-[0_0_25px_rgba(142,45,226,0.3)] transition-all duration-300 group ${glowEffects.cardPulse}`}
                     >
                       {/* Neon edge effect on hover */}
                       <div className={`absolute inset-0 rounded-xl bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-10 blur-[2px] -z-10 transition-opacity duration-300`}></div>
@@ -202,7 +202,7 @@ export default function Technology() {
                         </div>
                         <div>
                           <h3 className="font-medium text-lg mb-1 text-white group-hover:bg-gradient-to-r group-hover:from-[#F05A28] group-hover:to-[#8E2DE2] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">{feature.title}</h3>
-                          <p className="text-gray-400 text-sm leading-relaxed">
+                          <p className="text-white text-sm leading-relaxed">
                             {feature.description}
                           </p>
                         </div>
@@ -237,29 +237,29 @@ export default function Technology() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeIn}
           >
-            <div className="bg-[#222222] rounded-xl p-8 border border-gray-800 shadow-lg">
+            <div className="bg-[#1A1A1A] rounded-xl p-8 border border-gray-800 shadow-lg">
               <h3 className="text-white font-semibold text-xl mb-6 text-center bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">Platform Highlights</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
+                <div className="flex flex-col items-center p-5 bg-[#222222] rounded-lg hover:bg-[#222222]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F05A28] to-[#8E2DE2] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(240,90,40,0.2)]">
                     <Target className="text-white" size={22} />
                   </div>
                   <h4 className="text-white text-center font-medium mb-2 text-lg">Precision</h4>
-                  <p className="text-gray-400 text-sm text-center leading-relaxed">Targeting accuracy up to 95% with AI-driven optimization</p>
+                  <p className="text-white text-sm text-center leading-relaxed">Targeting accuracy up to 95% with AI-driven optimization</p>
                 </div>
                 <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(240,90,40,0.15)]">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#8E2DE2] to-[#4A00E0] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(142,45,226,0.2)]">
                     <Zap className="text-white" size={22} />
                   </div>
                   <h4 className="text-white text-center font-medium mb-2 text-lg">Performance</h4>
-                  <p className="text-gray-400 text-sm text-center leading-relaxed">40% higher conversion rates compared to traditional platforms</p>
+                  <p className="text-white text-sm text-center leading-relaxed">40% higher conversion rates compared to traditional platforms</p>
                 </div>
                 <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F05A28] to-[#4A00E0] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(240,90,40,0.2)]">
                     <Database className="text-white" size={22} />
                   </div>
                   <h4 className="text-white text-center font-medium mb-2 text-lg">Integration</h4>
-                  <p className="text-gray-400 text-sm text-center leading-relaxed">Seamless connection with 50+ major ad platforms and data sources</p>
+                  <p className="text-white text-sm text-center leading-relaxed">Seamless connection with 50+ major ad platforms and data sources</p>
                 </div>
               </div>
             </div>

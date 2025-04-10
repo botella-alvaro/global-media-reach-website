@@ -186,7 +186,7 @@ interface ServiceProps {
 function ServiceCard({ service, index }: ServiceProps) {
   return (
     <motion.div 
-      className="relative bg-[#222222] rounded-2xl p-8 transition-all duration-500 overflow-hidden group h-full transform-gpu perspective-[1000px]"
+      className="relative bg-[#1A1A1A] rounded-2xl p-8 transition-all duration-500 overflow-hidden group h-full transform-gpu perspective-[1000px]"
       whileHover={{
         scale: 1.03,
         rotateY: -5,
