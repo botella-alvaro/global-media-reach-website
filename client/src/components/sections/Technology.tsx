@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { fadeIn, slideUp } from "@/lib/animations";
 import { Target, PieChart, Crosshair, Database, Zap, BarChart3, Share2 } from "lucide-react";
-import { glowEffects } from "@/lib/gradients";
+import { gradients, glowEffects } from "@/lib/gradients";
 
 export default function Technology() {
   const techFeatures = [
     {
-      icon: <Target className="text-[#3B8EFD]" size={24} />,
+      icon: <Target className="text-gradient-orange-purple" size={24} />,
+      color: "from-[#F05A28] to-[#8E2DE2]",
       title: "Ad Formats",
       description: "Comprehensive support for all digital ad formats including display, video, native, and interactive ads.",
       rotation: 0,
@@ -14,7 +15,8 @@ export default function Technology() {
       delay: 0.1
     },
     {
-      icon: <PieChart className="text-[#3B8EFD]" size={24} />,
+      icon: <PieChart className="text-gradient-purple-blue" size={24} />,
+      color: "from-[#8E2DE2] to-[#4A00E0]",
       title: "KPIs",
       description: "Track and optimize toward custom KPIs including viewability, engagement, conversions, and ROAS.",
       rotation: 60,
@@ -22,7 +24,8 @@ export default function Technology() {
       delay: 0.2
     },
     {
-      icon: <Crosshair className="text-[#3B8EFD]" size={24} />,
+      icon: <Crosshair className="text-gradient-orange-blue" size={24} />,
+      color: "from-[#F05A28] to-[#4A00E0]",
       title: "Targeting",
       description: "Precision targeting options including demographic, behavioral, contextual, and lookalike audiences.",
       rotation: 120,
@@ -30,7 +33,8 @@ export default function Technology() {
       delay: 0.3
     },
     {
-      icon: <Database className="text-[#3B8EFD]" size={24} />,
+      icon: <Database className="text-gradient-purple-blue" size={24} />,
+      color: "from-[#8E2DE2] to-[#4A00E0]",
       title: "Data & Audiences",
       description: "Access to premium data sources and audience segments to reach your ideal customers.",
       rotation: 180,
@@ -38,7 +42,8 @@ export default function Technology() {
       delay: 0.4
     },
     {
-      icon: <BarChart3 className="text-[#3B8EFD]" size={24} />,
+      icon: <BarChart3 className="text-gradient-orange-purple" size={24} />,
+      color: "from-[#F05A28] to-[#8E2DE2]",
       title: "Analytics",
       description: "Real-time reporting and analytics dashboard with custom visualizations and insights.",
       rotation: 240,
@@ -46,7 +51,8 @@ export default function Technology() {
       delay: 0.5
     },
     {
-      icon: <Share2 className="text-[#3B8EFD]" size={24} />,
+      icon: <Share2 className="text-gradient-orange-blue" size={24} />,
+      color: "from-[#F05A28] to-[#4A00E0]",
       title: "Integrations",
       description: "Seamless integrations with major ad platforms, analytics tools, and marketing automation systems.",
       rotation: 300,
@@ -90,20 +96,67 @@ export default function Technology() {
               {/* Center AdBid logo/pulse */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
                 <motion.div 
-                  className="w-36 h-36 flex items-center justify-center rounded-full bg-gradient-to-br from-[#2D1A45] to-[#0B6EFD] p-1"
+                  className="w-40 h-40 flex items-center justify-center rounded-full bg-gradient-to-br from-[#F05A28] to-[#8E2DE2] p-[2px]"
                   animate={{ 
-                    boxShadow: ['0 0 10px 5px rgba(59,142,253,0.2)', '0 0 20px 10px rgba(59,142,253,0.4)', '0 0 10px 5px rgba(59,142,253,0.2)']
+                    boxShadow: ['0 0 10px 5px rgba(240,90,40,0.15)', '0 0 25px 10px rgba(142,45,226,0.25)', '0 0 10px 5px rgba(240,90,40,0.15)']
                   }}
                   transition={{ 
-                    duration: 3, 
+                    duration: 4, 
                     repeat: Infinity,
                     repeatType: 'reverse'
                   }}
                 >
-                  <div className="bg-[#1A1A1A] rounded-full w-full h-full flex flex-col items-center justify-center text-center p-4">
-                    <Zap className="text-[#FF6B2B] mb-1" size={24} />
-                    <h3 className="font-bold text-xl bg-gradient-to-r from-[#FF6B2B] to-[#0B6EFD] bg-clip-text text-transparent">AdBid</h3>
-                    <p className="text-xs text-gray-400">AI-Powered Platform</p>
+                  {/* Extra ring for enhanced effect */}
+                  <motion.div
+                    className="absolute inset-[-3px] rounded-full border border-[#F05A28]/30"
+                    animate={{ 
+                      opacity: [0.2, 0.6, 0.2],
+                      scale: [0.98, 1.01, 0.98]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity,
+                      repeatType: 'reverse'
+                    }}
+                  />
+                  <motion.div
+                    className="absolute inset-[-6px] rounded-full border border-[#8E2DE2]/20"
+                    animate={{ 
+                      opacity: [0.1, 0.4, 0.1],
+                      scale: [0.97, 1.02, 0.97]
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity,
+                      repeatType: 'reverse',
+                      delay: 0.5
+                    }}
+                  />
+                  
+                  {/* Inner content */}
+                  <div className="bg-[#12121A] rounded-full w-full h-full flex flex-col items-center justify-center text-center p-4 border border-gray-800/30">
+                    <Zap className="text-[#F05A28] mb-2" size={28} />
+                    <h3 className="font-bold text-xl bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">AdBid</h3>
+                    <p className="text-xs text-gray-400 mt-1">AI-Powered Platform</p>
+                    
+                    {/* Animated dots showing activity */}
+                    <div className="flex space-x-1 mt-2">
+                      <motion.div 
+                        className="w-1.5 h-1.5 rounded-full bg-[#F05A28]"
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+                      />
+                      <motion.div 
+                        className="w-1.5 h-1.5 rounded-full bg-[#8E2DE2]"
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                      />
+                      <motion.div 
+                        className="w-1.5 h-1.5 rounded-full bg-[#4A00E0]"
+                        animate={{ opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: 1 }}
+                      />
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -136,19 +189,28 @@ export default function Technology() {
                     whileHover={{ scale: 1.05 }}
                   >
                     <div 
-                      className={`bg-[#222222] rounded-xl p-4 border border-gray-800 hover:shadow-[0_0_20px_rgba(59,142,253,0.3)] transition-all duration-300 group ${glowEffects.cardPulse}`}
+                      className={`relative bg-[#222222] rounded-xl p-4 border border-gray-800 hover:shadow-[0_0_25px_rgba(142,45,226,0.3)] transition-all duration-300 group ${glowEffects.cardPulse}`}
                     >
+                      {/* Neon edge effect on hover */}
+                      <div className={`absolute inset-0 rounded-xl bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-10 blur-[2px] -z-10 transition-opacity duration-300`}></div>
+                      
                       <div className="flex items-start">
-                        <div className="w-10 h-10 rounded-lg bg-[rgba(61,42,85,0.6)] flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-gradient-to-br group-hover:from-[#3D2A55] group-hover:to-[#0B6EFD] transition-all duration-300">
-                          {feature.icon}
+                        <div className={`relative w-10 h-10 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 bg-gradient-to-br ${feature.color} bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-300 ${glowEffects.neonRing}`}>
+                          <div className="z-10">
+                            {feature.icon}
+                          </div>
                         </div>
                         <div>
-                          <h3 className="font-medium text-lg mb-1 text-white">{feature.title}</h3>
-                          <p className="text-gray-400 text-sm">
+                          <h3 className="font-medium text-lg mb-1 text-white group-hover:bg-gradient-to-r group-hover:from-[#F05A28] group-hover:to-[#8E2DE2] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">{feature.title}</h3>
+                          <p className="text-gray-400 text-sm leading-relaxed">
                             {feature.description}
                           </p>
                         </div>
                       </div>
+                      
+                      {/* Barely visible corner accents */}
+                      <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-transparent group-hover:border-[#F05A28]/30 rounded-tl-xl transition-all duration-300"></div>
+                      <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-transparent group-hover:border-[#8E2DE2]/30 rounded-br-xl transition-all duration-300"></div>
                     </div>
                     
                     {/* Connection line to center */}
@@ -178,26 +240,26 @@ export default function Technology() {
             <div className="bg-[#222222] rounded-xl p-6 border border-gray-800">
               <h3 className="text-white font-semibold text-xl mb-4 text-center">Platform Highlights</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex flex-col items-center p-4 bg-[#1A1A1A] rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#3D2A55] to-[#0B6EFD] flex items-center justify-center mb-3">
-                    <Target className="text-white" size={20} />
+                <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F05A28] to-[#8E2DE2] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(240,90,40,0.2)]">
+                    <Target className="text-white" size={22} />
                   </div>
-                  <h4 className="text-white text-center font-medium mb-2">Precision</h4>
-                  <p className="text-gray-400 text-sm text-center">Targeting accuracy up to 95% with AI-driven optimization</p>
+                  <h4 className="text-white text-center font-medium mb-2 text-lg">Precision</h4>
+                  <p className="text-gray-400 text-sm text-center leading-relaxed">Targeting accuracy up to 95% with AI-driven optimization</p>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-[#1A1A1A] rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FF6B2B] to-[#FF8B4B] flex items-center justify-center mb-3">
-                    <Zap className="text-white" size={20} />
+                <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(240,90,40,0.15)]">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#8E2DE2] to-[#4A00E0] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(142,45,226,0.2)]">
+                    <Zap className="text-white" size={22} />
                   </div>
-                  <h4 className="text-white text-center font-medium mb-2">Performance</h4>
-                  <p className="text-gray-400 text-sm text-center">40% higher conversion rates compared to traditional platforms</p>
+                  <h4 className="text-white text-center font-medium mb-2 text-lg">Performance</h4>
+                  <p className="text-gray-400 text-sm text-center leading-relaxed">40% higher conversion rates compared to traditional platforms</p>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-[#1A1A1A] rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#7928CA] to-[#3B8EFD] flex items-center justify-center mb-3">
-                    <Database className="text-white" size={20} />
+                <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F05A28] to-[#4A00E0] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(240,90,40,0.2)]">
+                    <Database className="text-white" size={22} />
                   </div>
-                  <h4 className="text-white text-center font-medium mb-2">Integration</h4>
-                  <p className="text-gray-400 text-sm text-center">Seamless connection with 50+ major ad platforms and data sources</p>
+                  <h4 className="text-white text-center font-medium mb-2 text-lg">Integration</h4>
+                  <p className="text-gray-400 text-sm text-center leading-relaxed">Seamless connection with 50+ major ad platforms and data sources</p>
                 </div>
               </div>
             </div>

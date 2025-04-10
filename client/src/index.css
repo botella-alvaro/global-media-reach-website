@@ -50,7 +50,7 @@ html {
 
 /* Text gradient utilities */
 .text-gradient-purple-blue {
-  background: linear-gradient(to right, #3D2A55, #0B6EFD);
+  background: linear-gradient(to right, #8E2DE2, #4A00E0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -58,7 +58,7 @@ html {
 }
 
 .text-gradient-orange-blue {
-  background: linear-gradient(to right, #FF6B2B, #0B6EFD);
+  background: linear-gradient(to right, #F05A28, #4A00E0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -66,9 +66,14 @@ html {
 }
 
 .text-gradient-orange-purple {
-  background: linear-gradient(to right, #FF6B2B, #7928CA);
+  background: linear-gradient(to right, #F05A28, #8E2DE2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+}
+
+/* Text shadow utility for buttons */
+.text-shadow-sm {
+  text-shadow: 0 0 10px rgba(142, 45, 226, 0.5);
 }
