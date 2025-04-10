@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +11,64 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply antialiased bg-background text-foreground font-poppins;
+    scroll-behavior: smooth;
   }
+
+  section {
+    @apply scroll-mt-20;
+  }
+}
+
+@layer components {
+  .gradient-heading {
+    @apply bg-gradient-to-r from-[#FF6B2B] via-[#FF8B4B] to-[#7928CA] bg-clip-text text-transparent;
+  }
+  
+  .section-spacing {
+    @apply py-24 md:py-28;
+  }
+  
+  .section-container {
+    @apply container mx-auto px-4 max-w-7xl;
+  }
+}
+
+/* Font definitions */
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Improves section transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Text gradient utilities */
+.text-gradient-purple-blue {
+  background: linear-gradient(to right, #3D2A55, #0B6EFD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.text-gradient-orange-blue {
+  background: linear-gradient(to right, #FF6B2B, #0B6EFD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.text-gradient-orange-purple {
+  background: linear-gradient(to right, #FF6B2B, #7928CA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
