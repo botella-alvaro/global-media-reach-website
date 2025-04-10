@@ -198,7 +198,7 @@ function ServiceCard({ service, index }: ServiceProps) {
     >
       {/* Mini header badge */}
       <div className="absolute -top-3 left-8 z-20">
-        <div className={`px-3 py-1 bg-gradient-to-r ${service.badgeColor} rounded-full text-xs font-medium text-white shadow-lg transform transition-transform duration-300 group-hover:scale-110`}>
+        <div className={`px-4 py-1.5 bg-gradient-to-r ${service.badgeColor} rounded-full text-xs font-bold tracking-wide text-white shadow-lg transform transition-transform duration-300 group-hover:scale-110`}>
           {service.badge}
         </div>
       </div>
@@ -212,14 +212,19 @@ function ServiceCard({ service, index }: ServiceProps) {
       {/* Icon with animated pulse */}
       <div className="flex items-center justify-between mb-8 mt-4">
         <div className="w-16 h-16 rounded-full flex items-center justify-center relative">
-          <div className="absolute inset-0 rounded-full bg-[#222] group-hover:bg-gradient-to-br group-hover:from-black group-hover:to-[#181818] transition-all duration-500"></div>
+          <div className="absolute inset-0 rounded-full bg-[#1a1a1a] group-hover:bg-gradient-to-br group-hover:from-[#1a1a1a] group-hover:to-black transition-all duration-500">
+            {/* Radial border glow on hover */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] opacity-0 group-hover:opacity-20 blur-[2px]"></div>
+          </div>
           <div className="relative z-10">
-            {service.icon}
+            <div className="bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text">
+              {service.icon}
+            </div>
           </div>
           
           {/* Pulse effect behind icon */}
           <motion.div 
-            className="absolute inset-0 rounded-full bg-gradient-to-r from-[#F05A28]/5 to-[#8E2DE2]/5 blur-sm"
+            className="absolute inset-0 rounded-full bg-gradient-to-r from-[#F05A28]/10 to-[#8E2DE2]/10 blur-sm"
             animate={{ 
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.7, 0.3] 
@@ -241,14 +246,14 @@ function ServiceCard({ service, index }: ServiceProps) {
       </div>
       
       <h3 className="font-poppins font-semibold text-xl mb-4 text-white group-hover:bg-gradient-to-r group-hover:from-[#F05A28] group-hover:to-[#8E2DE2] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">{service.title}</h3>
-      <p className="text-gray-400 mb-6">
+      <p className="text-gray-300 mb-6 leading-relaxed">
         {service.description}
       </p>
-      <ul className="space-y-3 mb-6">
+      <ul className="space-y-4 mb-6">
         {service.features.map((feature, idx) => (
           <li key={idx} className="flex items-start">
-            <CheckCircle className="text-[#F05A28] mt-1 mr-2 transition-colors duration-200" size={16} />
-            <span className="text-gray-300">{feature}</span>
+            <CheckCircle className="text-[#F05A28] mt-0.5 mr-3 transition-colors duration-200" size={18} />
+            <span className="text-white font-medium">{feature}</span>
           </li>
         ))}
       </ul>

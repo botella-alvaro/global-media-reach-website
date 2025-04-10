@@ -74,11 +74,11 @@ export default function Technology() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeIn}
         >
-          <span className="inline-block mb-3 px-4 py-1 bg-[#3D2A55] rounded-full text-sm font-medium text-[#3B8EFD]">
+          <span className="inline-block mb-3 px-4 py-1 bg-[#3D2A55] rounded-full text-sm font-medium text-[#F05A28]">
             Our Technology
           </span>
-          <h2 className="font-poppins font-bold text-3xl md:text-4xl mb-4 text-white">AdBid: Proprietary Platform</h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <h2 className="font-poppins font-bold text-3xl md:text-4xl mb-4 text-white bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">AdBid: Proprietary Platform</h2>
+          <p className="text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed">
             Our data-driven technology platform delivers superior performance through advanced targeting and real-time optimization.
           </p>
         </motion.div>
@@ -134,25 +134,25 @@ export default function Technology() {
                   />
                   
                   {/* Inner content */}
-                  <div className="bg-[#12121A] rounded-full w-full h-full flex flex-col items-center justify-center text-center p-4 border border-gray-800/30">
+                  <div className="bg-[#12121A] rounded-full w-full h-full flex flex-col items-center justify-center text-center p-4 border-2 border-[#F05A28]/20">
                     <Zap className="text-[#F05A28] mb-2" size={28} />
-                    <h3 className="font-bold text-xl bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">AdBid</h3>
-                    <p className="text-xs text-gray-400 mt-1">AI-Powered Platform</p>
+                    <h3 className="font-bold text-2xl bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">AdBid</h3>
+                    <p className="text-sm text-white font-medium mt-1">AI-Powered Platform</p>
                     
                     {/* Animated dots showing activity */}
-                    <div className="flex space-x-1 mt-2">
+                    <div className="flex space-x-1.5 mt-3">
                       <motion.div 
-                        className="w-1.5 h-1.5 rounded-full bg-[#F05A28]"
+                        className="w-2 h-2 rounded-full bg-[#F05A28]"
                         animate={{ opacity: [0.4, 1, 0.4] }}
                         transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
                       />
                       <motion.div 
-                        className="w-1.5 h-1.5 rounded-full bg-[#8E2DE2]"
+                        className="w-2 h-2 rounded-full bg-[#8E2DE2]"
                         animate={{ opacity: [0.4, 1, 0.4] }}
                         transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
                       />
                       <motion.div 
-                        className="w-1.5 h-1.5 rounded-full bg-[#4A00E0]"
+                        className="w-2 h-2 rounded-full bg-[#F05A28]"
                         animate={{ opacity: [0.4, 1, 0.4] }}
                         transition={{ duration: 1.5, repeat: Infinity, delay: 1 }}
                       />
@@ -237,9 +237,9 @@ export default function Technology() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeIn}
           >
-            <div className="bg-[#222222] rounded-xl p-6 border border-gray-800">
-              <h3 className="text-white font-semibold text-xl mb-4 text-center">Platform Highlights</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-[#222222] rounded-xl p-8 border border-gray-800 shadow-lg">
+              <h3 className="text-white font-semibold text-xl mb-6 text-center bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">Platform Highlights</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F05A28] to-[#8E2DE2] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(240,90,40,0.2)]">
                     <Target className="text-white" size={22} />
