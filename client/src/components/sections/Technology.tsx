@@ -247,14 +247,14 @@ export default function Technology() {
                   <h4 className="text-white text-center font-medium mb-2 text-lg">Precision</h4>
                   <p className="text-white text-sm text-center leading-relaxed">Targeting accuracy up to 95% with AI-driven optimization</p>
                 </div>
-                <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(240,90,40,0.15)]">
+                <div className="flex flex-col items-center p-5 bg-[#222222] rounded-lg hover:bg-[#222222]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(240,90,40,0.15)]">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#8E2DE2] to-[#4A00E0] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(142,45,226,0.2)]">
                     <Zap className="text-white" size={22} />
                   </div>
                   <h4 className="text-white text-center font-medium mb-2 text-lg">Performance</h4>
                   <p className="text-white text-sm text-center leading-relaxed">40% higher conversion rates compared to traditional platforms</p>
                 </div>
-                <div className="flex flex-col items-center p-5 bg-[#1A1A1A] rounded-lg hover:bg-[#1A1A1A]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
+                <div className="flex flex-col items-center p-5 bg-[#222222] rounded-lg hover:bg-[#222222]/80 transition-all duration-300 hover:shadow-[0_10px_25px_-5px_rgba(142,45,226,0.15)]">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#F05A28] to-[#4A00E0] flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(240,90,40,0.2)]">
                     <Database className="text-white" size={22} />
                   </div>
