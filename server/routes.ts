@@ -1,3 +1,3 @@
-// This file is kept for type definitions but server functionality is removed
-// for static deployment
+
+// File kept for type definitions only - server removed for static deployment
 export {};
