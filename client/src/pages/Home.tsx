@@ -100,18 +100,28 @@ export default function Home() {
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-16 bg-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] mb-4">
+      <section id="technology" className="py-24 bg-[#0D0D0D] relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.075)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-[#8E2DE2]/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#F05A28]/10 rounded-full blur-[100px]" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <span className="inline-block mb-3 px-4 py-1 bg-[#3D2A55] rounded-full text-sm font-medium text-[#F05A28]">
               Our Technology
+            </span>
+            <h2 className="font-bold text-4xl md:text-5xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
+              AdBid: Proprietary Platform
             </h2>
-            <p className="text-lg text-white max-w-2xl mx-auto">
-              Proprietary platforms and tools that give our clients a competitive edge.
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+              Our data-driven technology platform delivers superior performance through advanced targeting and real-time optimization.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {/* Platform Features */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Tech Platform 1 */}
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-700 hover:border-[#F05A28] transition-colors duration-300">
               <div className="w-12 h-12 rounded-full bg-[#1A1A1A] flex items-center justify-center mb-4">
@@ -149,7 +159,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            
+
             {/* Tech Platform 2 */}
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-700 hover:border-[#8E2DE2] transition-colors duration-300">
               <div className="w-12 h-12 rounded-full bg-[#1A1A1A] flex items-center justify-center mb-4">
@@ -187,7 +197,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            
+
             {/* Tech Platform 3 */}
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-700 hover:border-gradient-to-r from-[#F05A28] to-[#8E2DE2] transition-colors duration-300">
               <div className="w-12 h-12 rounded-full bg-[#1A1A1A] flex items-center justify-center mb-4">
