@@ -4,9 +4,13 @@ import { storage } from "./storage";
 import { insertAuditRequestSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Health check endpoint for Autoscale Deployments
+  // Serve React app in production, health check otherwise
   app.get("/", (req, res) => {
-    res.status(200).json({ status: "ok" });
+    if (process.env.NODE_ENV === "production") {
+      res.sendFile("index.html", { root: "./dist/public" });
+    } else {
+      res.status(200).json({ status: "ok" });
+    }
   });
 
   // API endpoint for submitting audit requests
