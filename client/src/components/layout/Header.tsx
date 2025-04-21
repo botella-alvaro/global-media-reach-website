@@ -3,8 +3,8 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import gradients from '@/lib/gradients';
 
-// Logo path (relative to assets directory)
-const logoPath = "/assets/Copy of Global Media Reach Logo.png";
+// Logo path (relative to public directory)
+const logoPath = "/images/logo.png";
 
 interface NavLinkProps {
   href: string;
