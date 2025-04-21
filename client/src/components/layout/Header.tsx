@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import gradients from '@/lib/gradients';
 
 // Logo path (relative to public directory)
-const logoPath = "/images/logo.png";
+const logoPath = "/images/Copy of Global Media Reach Logo.png";
 
 interface NavLinkProps {
   href: string;
