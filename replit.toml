@@ -1,0 +1,4 @@
+
+[deploy]
+  type = "static"
+  dir = "dist/public"
