@@ -1,73 +1,106 @@
 import { motion } from "framer-motion";
-import { fadeIn } from "@/lib/animations";
+import { fadeIn, staggerContainer } from "@/lib/animations";
 import { 
-  ChartLine, 
-  Code, 
-  Monitor, 
+  LineChart, 
+  Code2, 
+  MonitorSmartphone, 
   CheckCircle, 
   ArrowRight,
-  Zap,
+  Activity,
+  Bot,
   Target,
-  BarChart
+  Cpu,
+  Layers,
+  Shuffle
 } from "lucide-react";
-import { gradients, glowEffects } from "@/lib/gradients";
-import { useEffect } from "react";
 
 export default function Services() {
   const services = [
     {
-      icon: <ChartLine size={32} className="text-white" />,
+      icon: <LineChart size={36} className="text-white" />,
       badge: "STRATEGY",
-      badgeColor: "from-[#F05A28] to-[#8E2DE2]",
       title: "Media Strategy, Buying & Advisory",
       description: "Our team of media experts develops custom strategies to optimize your advertising budget and reach the right audiences at the right time.",
       features: [
         "Audience-driven targeting",
         "Cross-channel optimization",
         "Performance analysis"
+      ],
+      highlights: [
+        {
+          icon: <Target size={20} />,
+          text: "Precision targeting"
+        },
+        {
+          icon: <Activity size={20} />,
+          text: "Performance optimization"
+        },
+        {
+          icon: <Shuffle size={20} />,
+          text: "Cross-channel approach"
+        }
       ]
     },
     {
-      icon: <Code size={32} className="text-white" />,
+      icon: <Cpu size={36} className="text-white" />,
       badge: "TECH",
-      badgeColor: "from-[#8E2DE2] to-[#F05A28]",
       title: "Proprietary Technology (AdBid)",
       description: "Our cutting-edge AdBid platform leverages AI and machine learning to optimize campaign performance and maximize ROI.",
       features: [
         "Automated bid management",
         "Real-time analytics",
         "AI-powered recommendations"
+      ],
+      highlights: [
+        {
+          icon: <Bot size={20} />,
+          text: "AI-driven optimization"
+        },
+        {
+          icon: <Activity size={20} />,
+          text: "Real-time performance"
+        },
+        {
+          icon: <Code2 size={20} />,
+          text: "Proprietary algorithms"
+        }
       ]
     },
     {
-      icon: <Monitor size={32} className="text-white" />,
+      icon: <MonitorSmartphone size={36} className="text-white" />,
       badge: "DOOH",
-      badgeColor: "from-[#F05A28] to-[#8E2DE2]",
       title: "DOOH for Global Brands",
       description: "Leverage Digital Out-of-Home advertising to create impactful experiences that connect with your audience in physical spaces.",
       features: [
         "Programmatic DOOH buying",
         "Location-based targeting",
         "Cross-channel integration"
+      ],
+      highlights: [
+        {
+          icon: <Layers size={20} />,
+          text: "Programmatic buying"
+        },
+        {
+          icon: <Target size={20} />,
+          text: "Location-based targeting"
+        },
+        {
+          icon: <Shuffle size={20} />,
+          text: "Cross-channel integration"
+        }
       ]
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
   return (
-    <section id="services" className="py-28 bg-[#1A1A1A] relative overflow-hidden">
+    <section id="services" className="py-28 bg-[#0D0D0D] relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-[#8E2DE2]/5 blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-[#F05A28]/5 blur-3xl"></div>
+      
+      {/* Subtle background grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.075)_1px,transparent_1px)] bg-[size:30px_30px] opacity-20"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
@@ -77,94 +110,26 @@ export default function Services() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeIn}
         >
-          <span className="inline-block mb-3 px-4 py-1 bg-[#3D2A55] rounded-full text-sm font-medium text-[#8E2DE2]">
-            Our Services
+          <span className="inline-block mb-3 px-4 py-1 bg-[#3D2A55] rounded-full text-sm font-medium text-[#F05A28]">
+            Our Expertise
           </span>
-          <h2 className="font-poppins font-bold text-3xl md:text-4xl mb-4 text-white">What We Do</h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <h2 className="font-poppins font-bold text-3xl md:text-5xl mb-4 text-white bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text text-transparent">What We Do</h2>
+          <p className="text-gray-200 max-w-2xl mx-auto font-medium">
             Our full-stack approach combines strategic expertise, proprietary technology, and creative excellence to deliver exceptional results.
           </p>
         </motion.div>
 
-        {/* Arc-arranged cards */}
-        <div className="relative">
-          <motion.div 
-            className="relative max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={containerVariants}
-          >
-            <div className="flex flex-col lg:flex-row gap-10 items-center">
-              {services.map((service, index) => {
-                // Calculate vertical offset for arc layout (only on desktop)
-                const yOffset = index === 1 ? -30 : 0;
-                
-                return (
-                  <motion.div 
-                    key={index} 
-                    className="w-full lg:w-1/3"
-                    style={{ y: yOffset }}
-                    variants={{
-                      hidden: { 
-                        opacity: 0, 
-                        y: 50 + yOffset 
-                      },
-                      visible: { 
-                        opacity: 1, 
-                        y: yOffset,
-                        transition: { 
-                          duration: 0.7,
-                          ease: [0.22, 1, 0.36, 1] // Custom ease curve for more dynamic motion
-                        }
-                      }
-                    }}
-                  >
-                    <ServiceCard service={service} index={index} />
-                  </motion.div>
-                );
-              })}
-            </div>
-            
-            {/* Connecting lines between cards (visible only on desktop) */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 z-0">
-              <svg width="100%" height="40" viewBox="0 0 800 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,20 C266,50 533,-10 800,20" stroke="url(#service-line)" strokeWidth="1" strokeDasharray="4 4" />
-                <defs>
-                  <linearGradient id="service-line" x1="0" y1="0" x2="800" y2="0">
-                    <stop offset="0%" stopColor="#F05A28" stopOpacity="0.3" />
-                    <stop offset="50%" stopColor="#8E2DE2" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#4A00E0" stopOpacity="0.3" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </motion.div>
-        </div>
-        
-        {/* Features summary */}
+        {/* Service Cards - 3 Column Grid */}
         <motion.div 
-          className="mt-20 max-w-xl mx-auto text-center py-8 px-6 bg-[#222]/50 rounded-xl border border-gray-800"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
         >
-          <div className="flex justify-center items-center gap-4 mb-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F05A28]/10">
-              <Zap className="h-5 w-5 text-[#F05A28]" />
-            </div>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#8E2DE2]/10">
-              <Target className="h-5 w-5 text-[#8E2DE2]" />
-            </div>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#4A00E0]/10">
-              <BarChart className="h-5 w-5 text-[#4A00E0]" />
-            </div>
-          </div>
-          <h3 className="text-white font-medium text-lg mb-2">End-to-End Solutions</h3>
-          <p className="text-gray-400 text-sm">
-            Our integrated approach combines strategic insight, proprietary tech, and creative execution for measurable business impact across all channels.
-          </p>
+          {services.map((service, index) => (
+            <ServiceCard key={index} service={service} />
+          ))}
         </motion.div>
       </div>
     </section>
@@ -175,94 +140,116 @@ interface ServiceProps {
   service: {
     icon: React.ReactNode;
     badge: string;
-    badgeColor: string;
     title: string;
     description: string;
     features: string[];
+    highlights: {
+      icon: React.ReactNode;
+      text: string;
+    }[];
   };
-  index: number;
 }
 
-function ServiceCard({ service, index }: ServiceProps) {
+function ServiceCard({ service }: ServiceProps) {
   return (
     <motion.div 
-      className="relative bg-[#1A1A1A] rounded-2xl p-8 transition-all duration-500 overflow-hidden group h-full transform-gpu perspective-[1000px]"
-      whileHover={{
-        scale: 1.03,
-        rotateY: -5,
-        rotateX: 5,
-        translateZ: 20,
-        boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
-        transition: { duration: 0.3 }
+      className="h-full"
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+        }
       }}
     >
-      {/* Mini header badge */}
-      <div className="absolute -top-3 left-8 z-20">
-        <div className={`px-4 py-1.5 bg-gradient-to-r ${service.badgeColor} rounded-full text-xs font-bold tracking-wide text-white shadow-lg transform transition-transform duration-300 group-hover:scale-110`}>
-          {service.badge}
-        </div>
-      </div>
-      
-      {/* Gradient border effect on hover */}
-      <div className="absolute inset-0 rounded-2xl border border-gray-800 group-hover:border-transparent group-hover:before:absolute group-hover:before:inset-0 group-hover:before:-z-10 group-hover:before:p-[1px] group-hover:before:bg-gradient-to-r group-hover:before:from-[#F05A28] group-hover:before:to-[#8E2DE2] group-hover:before:rounded-[inherit] group-hover:before:opacity-70"></div>
-      
-      {/* Top gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#8E2DE2]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-      
-      {/* Icon with animated pulse */}
-      <div className="flex items-center justify-between mb-8 mt-4">
-        <div className="w-16 h-16 rounded-full flex items-center justify-center relative">
-          <div className="absolute inset-0 rounded-full bg-[#1a1a1a] group-hover:bg-gradient-to-br group-hover:from-[#1a1a1a] group-hover:to-black transition-all duration-500">
-            {/* Radial border glow on hover */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] opacity-0 group-hover:opacity-20 blur-[2px]"></div>
-          </div>
-          <div className="relative z-10">
-            <div className="bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] bg-clip-text">
-              {service.icon}
+      <div className="relative bg-[#121212] border border-gray-800 rounded-xl overflow-hidden h-full group transform-gpu transition-all duration-300 hover:shadow-[0_0_30px_rgba(142,45,226,0.15)]">
+        {/* Badge Header */}
+        <div className="w-full h-1.5 bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]"></div>
+        
+        {/* Card Content */}
+        <div className="p-8">
+          {/* Service Label */}
+          <div className="flex items-center mb-6">
+            <div className="px-3 py-1 bg-[#1E1E1E] border border-gray-700 rounded-md">
+              <span className="text-xs font-bold tracking-wider text-[#F05A28]">{service.badge}</span>
             </div>
           </div>
           
-          {/* Pulse effect behind icon */}
-          <motion.div 
-            className="absolute inset-0 rounded-full bg-gradient-to-r from-[#F05A28]/10 to-[#8E2DE2]/10 blur-sm"
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.7, 0.3] 
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          ></motion.div>
-        </div>
-        
-        {/* Illustration placeholder */}
-        <div className="w-28 h-28 opacity-70 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-3">
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-[#222] to-[#333] flex items-center justify-center">
-            <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-r from-[#F05A28]/20 to-[#8E2DE2]/20"></div>
+          {/* Icon & Title Section */}
+          <div className="flex items-start mb-6">
+            <div className="w-16 h-16 rounded-xl bg-[#1E1E1E] border border-gray-800 flex items-center justify-center mr-5 overflow-hidden group-hover:border-[#8E2DE2]/30 transition-colors duration-300 relative">
+              {/* Icon */}
+              <div className="relative z-10 transition-transform duration-500 group-hover:scale-110">
+                {service.icon}
+              </div>
+              
+              {/* Glow effect on hover */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-[#F05A28]/10 to-[#8E2DE2]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0, 0.3, 0] 
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-bold text-white leading-tight mb-2 group-hover:bg-gradient-to-r group-hover:from-[#F05A28] group-hover:to-[#8E2DE2] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">{service.title}</h3>
+              <p className="text-white text-base leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          </div>
+          
+          {/* Feature List */}
+          <div className="mb-8">
+            <ul className="space-y-3">
+              {service.features.map((feature, idx) => (
+                <li key={idx} className="flex items-center">
+                  <CheckCircle className="text-[#F05A28] mr-3 flex-shrink-0" size={18} />
+                  <span className="text-white font-medium">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Highlights Section */}
+          <div className="border-t border-gray-800 pt-6 mt-6">
+            <div className="grid grid-cols-3 gap-3">
+              {service.highlights.map((highlight, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center group/item">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 bg-[#1E1E1E] border border-gray-800 group-hover/item:border-[#F05A28]/30 transition-all duration-300">
+                    <div className="text-[#F05A28] group-hover/item:scale-110 transition-transform duration-300">
+                      {highlight.icon}
+                    </div>
+                  </div>
+                  <span className="text-white text-xs font-medium">{highlight.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Learn More Link */}
+          <div className="mt-6">
+            <a 
+              href="#" 
+              className="inline-flex items-center font-medium text-[#8E2DE2] hover:text-[#F05A28] transition-colors duration-300 group-hover:underline"
+            >
+              Learn more <ArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-200" size={16} />
+            </a>
           </div>
         </div>
+        
+        {/* Gradient corners for decorative effect */}
+        <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-transparent group-hover:border-[#F05A28]/30 rounded-tl-lg transition-all duration-300"></div>
+        <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-transparent group-hover:border-[#8E2DE2]/30 rounded-br-lg transition-all duration-300"></div>
       </div>
-      
-      <h3 className="font-poppins font-semibold text-xl mb-4 text-white group-hover:bg-gradient-to-r group-hover:from-[#F05A28] group-hover:to-[#8E2DE2] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">{service.title}</h3>
-      <p className="text-gray-300 mb-6 leading-relaxed">
-        {service.description}
-      </p>
-      <ul className="space-y-4 mb-6">
-        {service.features.map((feature, idx) => (
-          <li key={idx} className="flex items-start">
-            <CheckCircle className="text-[#F05A28] mt-0.5 mr-3 transition-colors duration-200" size={18} />
-            <span className="text-white font-medium">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <a 
-        href="#" 
-        className="inline-flex items-center font-medium text-[#8E2DE2] hover:text-[#F05A28] transition-colors duration-300 group-hover:underline"
-      >
-        Learn more <ArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-200" size={16} />
-      </a>
     </motion.div>
   );
 }
