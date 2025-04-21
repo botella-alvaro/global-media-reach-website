@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import gradients from '@/lib/gradients';
 
-// Import logo image 
+// Logo path (relative to public directory)
 const logoPath = "/images/logo.png";
 
 interface NavLinkProps {
