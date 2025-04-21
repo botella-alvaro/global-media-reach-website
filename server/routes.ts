@@ -1,3 +1,15 @@
 
-// File kept for type definitions only - server removed for static deployment
-export {};
+import express, { Express } from 'express';
+import http from 'http';
+
+export async function registerRoutes(app: Express) {
+  // Create HTTP server
+  const server = http.createServer(app);
+  
+  // Basic health check route
+  app.get('/api/health', (_req, res) => {
+    res.json({ status: 'ok' });
+  });
+
+  return server;
+}
