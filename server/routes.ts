@@ -4,6 +4,11 @@ import { storage } from "./storage";
 import { insertAuditRequestSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Health check endpoint for Autoscale Deployments
+  app.get("/", (req, res) => {
+    res.status(200).json({ status: "ok" });
+  });
+
   // API endpoint for submitting audit requests
   app.post("/api/audit-request", async (req, res) => {
     try {
