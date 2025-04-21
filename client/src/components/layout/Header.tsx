@@ -91,18 +91,10 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <a href="#home" className="flex items-center group">
-              <img 
-                src={logoPath} 
-                alt="Global Media Reach Logo" 
-                className="h-11 mr-3 transition-transform duration-300 group-hover:scale-105"
-              />
-              <span className="font-bold text-xl md:text-2xl text-white transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text" 
-                style={{ 
-                  backgroundImage: gradients.primary,
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent' 
-                }}>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#2D1A45] to-[#0B6EFD] flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-xl">G</span>
+              </div>
+              <span className="font-bold text-xl md:text-2xl text-white">
                 Global Media Reach
               </span>
             </a>
