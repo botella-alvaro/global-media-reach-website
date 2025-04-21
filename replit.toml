@@ -1,4 +1,4 @@
 
 [deploy]
   type = "static"
-  dir = "dist/public"
+  dir = "client"
