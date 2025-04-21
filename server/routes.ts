@@ -1,17 +1,14 @@
+
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertAuditRequestSchema } from "@shared/schema";
+import express from "express";
+import path from "path";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Serve React app in production, health check otherwise
-  app.get("/", (req, res) => {
-    if (process.env.NODE_ENV === "production") {
-      res.sendFile("index.html", { root: "./dist/public" });
-    } else {
-      res.status(200).json({ status: "ok" });
-    }
-  });
+  // Serve static files from the dist/public directory
+  app.use(express.static("dist/public"));
 
   // API endpoint for submitting audit requests
   app.post("/api/audit-request", async (req, res) => {
@@ -31,7 +28,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  const httpServer = createServer(app);
+  // Serve the React app for all other routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve("dist/public/index.html"));
+  });
 
+  const httpServer = createServer(app);
   return httpServer;
 }
