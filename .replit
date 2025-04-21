@@ -15,7 +15,6 @@ localPort = 5000
 externalPort = 80
 
 [workflows]
-runButton = "Start Development"
 
 [[workflows.workflow]]
 name = "Project"
@@ -37,8 +36,8 @@ agentRequireRestartOnSave = false
 task = "packager.installForAll"
 
 [[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run preview"
+task = "workflow.run"
+args = "Project"
 
 [[workflows.workflow]]
 name = "Start Development"
@@ -46,5 +45,5 @@ author = 41368718
 mode = "sequential"
 
 [[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run dev"
+task = "workflow.run"
+args = "Project"
