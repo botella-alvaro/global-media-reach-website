@@ -8,7 +8,7 @@ import path from "path";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Serve static files from the dist/public directory
-  app.use(express.static("dist/public"));
+  app.use(express.static(path.resolve("dist/public")));
 
   // API endpoint for submitting audit requests
   app.post("/api/audit-request", async (req, res) => {
@@ -28,8 +28,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Serve the React app for all other routes
-  app.get("*", (req, res) => {
+  // Serve index.html for all other routes (SPA behavior)
+  app.get("*", (_, res) => {
     res.sendFile(path.resolve("dist/public/index.html"));
   });
 
