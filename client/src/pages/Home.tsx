@@ -119,8 +119,8 @@ function LiveAuctionSection() {
               </span>
             </h2>
             <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
-              Copilot Ads processes millions of auction signals per second — adjusting bids,
-              reallocating budget, and cutting waste before the next impression fires.
+              Our proprietary engine works behind every impression — so your budget always
+              ends up where it performs, not where it's wasted.
             </p>
 
             {/* Live auction counter */}
