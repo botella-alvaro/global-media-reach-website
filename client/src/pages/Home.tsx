@@ -294,16 +294,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Technology ────────────────────────────────────────────────────── */}
-      <section id="technology" className="py-24 bg-[#0D0D0D] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:22px_22px] opacity-70 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8E2DE2]/8 rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#F05A28]/8 rounded-full blur-[110px] pointer-events-none" />
+      {/* ── Copilot Ads ───────────────────────────────────────────────────── */}
+      <section id="technology" className="py-24 bg-[#080808] relative overflow-hidden">
+        <div className="absolute right-0 top-0 w-[600px] h-[600px] bg-[#8E2DE2]/5 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-[#F05A28]/5 rounded-full blur-[130px] pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10">
+
           {/* Header */}
           <motion.div
-            className="text-center mb-14"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -313,145 +313,186 @@ export default function Home() {
               Our Technology
             </span>
             <h2 className="font-bold text-4xl md:text-5xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
-              AdBid: Proprietary Platform
+              Meet Copilot Ads
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              Our data-driven technology platform delivers superior performance through advanced targeting and real-time optimization.
+              Our proprietary AI platform that thinks alongside your team — optimizing every campaign signal in real time.
             </p>
           </motion.div>
 
-          {/* ── Main AdBid showcase card ── */}
-          <motion.div
-            className="mb-6 rounded-2xl border border-gray-800/60 overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-          >
-            <div className="flex flex-col md:flex-row">
+          {/* Two-column: copy left, dashboard right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 items-center">
 
-              {/* Left – animated AdBid badge (fully contained) */}
-              <div className="md:w-2/5 p-10 flex flex-col items-center justify-center bg-[#0f0f0f] border-b md:border-b-0 md:border-r border-gray-800/60">
-                {/* Ring container – fixed size so nothing bleeds */}
-                <div className="relative w-44 h-44 flex items-center justify-center mb-6 flex-shrink-0">
-                  {/* Outer rotating conic ring */}
-                  <motion.div
-                    className="absolute inset-0 rounded-full"
-                    style={{ background: 'conic-gradient(from 0deg, #F05A28, #8E2DE2, #F05A28)' }}
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                  />
-                  {/* Mask to create ring effect */}
-                  <div className="absolute inset-[3px] rounded-full bg-[#0f0f0f]" />
-                  {/* Inner slow counter-rotate */}
-                  <motion.div
-                    className="absolute inset-[10px] rounded-full opacity-20"
-                    style={{ background: 'conic-gradient(from 180deg, #8E2DE2, #F05A28, #8E2DE2)' }}
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
-                  />
-                  {/* Center content */}
-                  <div className="relative z-10 flex flex-col items-center justify-center">
-                    <Zap className="text-[#F05A28] w-9 h-9 mb-1" />
-                    <span className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
-                      AdBid
-                    </span>
-                    <div className="flex gap-1.5 mt-2">
-                      {[0, 0.5, 1].map((d, i) => (
-                        <motion.div
-                          key={i}
-                          className={`w-1.5 h-1.5 rounded-full ${i === 1 ? 'bg-[#8E2DE2]' : 'bg-[#F05A28]'}`}
-                          animate={{ opacity: [0.3, 1, 0.3] }}
-                          transition={{ duration: 1.5, repeat: Infinity, delay: d }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-500 text-sm text-center">AI-Powered Advertising Platform</p>
+            {/* Left – feature copy */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.55 }}
+            >
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-[#F05A28]/10 border border-[#F05A28]/20 rounded-lg">
+                <Zap className="w-3.5 h-3.5 text-[#F05A28]" />
+                <span className="text-[#F05A28] text-xs font-semibold uppercase tracking-wider">AI-Powered</span>
               </div>
 
-              {/* Right – details */}
-              <div className="md:w-3/5 p-10 bg-[#0a0a0a]">
-                <h3 className="text-2xl font-bold text-white mb-3">Intelligent Real-Time Bidding</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                  AdBid processes billions of signals per second to place the right ad, at the right time, to the right person — across every major digital channel.
+              <h3 className="text-3xl font-bold text-white mb-5 leading-tight">
+                The co-pilot your campaigns have been missing
+              </h3>
+
+              <p className="text-gray-400 leading-relaxed mb-10">
+                Copilot Ads processes billions of bidding signals every second, automatically reallocating budget to top performers and cutting spend on what isn't working — without a single manual tweak.
+              </p>
+
+              <div className="space-y-5">
+                {[
+                  { icon: Target,    label: 'Precision targeting',       desc: 'Up to 95% audience accuracy with AI-driven segmentation' },
+                  { icon: Zap,       label: 'Real-time optimization',    desc: 'Bids and budgets adjust every millisecond based on live signals' },
+                  { icon: Database,  label: '50+ platform integrations', desc: 'Unified control across all major ad networks and DSPs' },
+                  { icon: BarChart3, label: 'Unified attribution',       desc: 'Full-funnel visibility from first impression to final conversion' },
+                ].map((f, i) => (
+                  <motion.div
+                    key={f.label}
+                    className="flex items-start gap-4"
+                    initial={{ opacity: 0, x: -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 + i * 0.08, duration: 0.4 }}
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#F05A28]/15 to-[#8E2DE2]/15 border border-[#F05A28]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <f.icon className="w-4 h-4 text-[#F05A28]" />
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-semibold mb-0.5">{f.label}</p>
+                      <p className="text-gray-500 text-sm">{f.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right – live campaign dashboard card */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.55, delay: 0.1 }}
+              className="rounded-2xl border border-gray-800/60 overflow-hidden bg-[#0f0f0f]"
+            >
+              {/* macOS-style title bar */}
+              <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-800/60 bg-[#111]">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                  <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+                  <div className="w-3 h-3 rounded-full bg-[#28CA42]" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block" />
+                  <span className="text-gray-500 text-xs font-mono">copilot-ads · live</span>
+                </div>
+                <span className="text-gray-700 text-xs font-mono">v2.4.1</span>
+              </div>
+
+              {/* Dashboard body */}
+              <div className="p-6">
+                <p className="text-gray-600 text-[10px] uppercase tracking-widest mb-5 font-mono">
+                  Active Campaigns
                 </p>
 
-                {/* Inline stat pills */}
-                <div className="grid grid-cols-3 gap-3 mb-8">
+                <div className="space-y-5">
                   {[
-                    { value: '95%', label: 'Accuracy' },
-                    { value: '40%', label: 'Higher CVR' },
-                    { value: '50+', label: 'Platforms' },
-                  ].map((s) => (
-                    <div key={s.label} className="bg-[#111] border border-gray-800/60 rounded-xl p-4 text-center">
-                      <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
-                        {s.value}
+                    { name: 'Brand Awareness – Q1',       platform: 'Meta · Google',        pct: 84, value: 'ROAS 4.2×', color: '#F05A28' },
+                    { name: 'Lead Generation',            platform: 'LinkedIn · Display',   pct: 91, value: 'CVR +40%',  color: '#8E2DE2' },
+                    { name: 'Retargeting – Cart Abandon', platform: 'Google · TikTok',      pct: 73, value: 'CPA −28%',  color: '#c44aab' },
+                    { name: 'Prospecting – Lookalike',    platform: 'Meta · Programmatic',  pct: 68, value: 'CTR 3.1%',  color: '#F05A28' },
+                  ].map((c, i) => (
+                    <div key={c.name}>
+                      <div className="flex items-start justify-between mb-1.5">
+                        <div>
+                          <p className="text-white text-xs font-medium leading-snug">{c.name}</p>
+                          <p className="text-gray-600 text-[10px] font-mono">{c.platform}</p>
+                        </div>
+                        <span className="text-xs font-semibold ml-3 flex-shrink-0" style={{ color: c.color }}>
+                          {c.value}
+                        </span>
                       </div>
-                      <div className="text-gray-600 text-xs mt-0.5 uppercase tracking-wide">{s.label}</div>
+                      <div className="h-1.5 bg-gray-800/80 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full"
+                          style={{ background: `linear-gradient(90deg, ${c.color}, #8E2DE2)` }}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${c.pct}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, delay: 0.4 + i * 0.15, ease: 'easeOut' }}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Feature list */}
-                <div className="space-y-2.5">
-                  {[
-                    'Real-time bid optimization every millisecond',
-                    'Cross-channel unified attribution',
-                    'Predictive audience modeling with ML',
-                  ].map((feat) => (
-                    <div key={feat} className="flex items-center gap-3 text-sm text-gray-400">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#F05A28] to-[#8E2DE2] flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-3 h-3 text-white" />
-                      </div>
-                      {feat}
-                    </div>
-                  ))}
+                {/* Footer: live signal */}
+                <div className="mt-6 pt-4 border-t border-gray-800/50 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#F05A28] animate-pulse inline-block" />
+                    <span className="text-gray-600 text-xs font-mono">Optimizing bids in real-time</span>
+                  </div>
+                  {/* Waveform bars */}
+                  <div className="flex items-end gap-0.5 h-5">
+                    {[12, 20, 10, 18, 14, 22, 8].map((h, i) => (
+                      <motion.div
+                        key={i}
+                        className="w-1 rounded-sm bg-gradient-to-t from-[#F05A28] to-[#8E2DE2]"
+                        style={{ height: `${h}px` }}
+                        animate={{ scaleY: [1, 0.3, 1] }}
+                        transition={{
+                          duration: 0.7 + i * 0.1,
+                          repeat: Infinity,
+                          repeatType: 'reverse',
+                          delay: i * 0.08,
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
+            </motion.div>
 
-            </div>
-          </motion.div>
+          </div>
 
-          {/* ── Feature cards – simple, no absolute tricks ── */}
+          {/* Bottom stat cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 icon: Target,
-                title: 'Precision',
-                stat: '95%',
-                statLabel: 'Targeting Accuracy',
-                desc: 'Advanced algorithms analyze countless data points in real-time, delivering up to 95% targeting accuracy and dramatically reducing wasted ad spend.',
-                delay: 0.15,
+                title: 'Precision Targeting',
+                stat: '95%', statLabel: 'Accuracy',
+                desc: 'AI-driven audience segmentation eliminates wasted impressions and dramatically lifts engagement rates.',
+                delay: 0,
               },
               {
                 icon: Zap,
-                title: 'Performance',
-                stat: '40%',
-                statLabel: 'Higher Conversions',
-                desc: 'Machine learning continuously optimizes campaigns in real-time, producing conversion rates that average 40% above industry standards.',
-                delay: 0.25,
+                title: 'Peak Performance',
+                stat: '40%', statLabel: 'Higher Conversions',
+                desc: 'Continuous real-time optimization keeps your campaigns ahead of the competition, every millisecond.',
+                delay: 0.1,
               },
               {
                 icon: Database,
-                title: 'Integration',
-                stat: '50+',
-                statLabel: 'Connected Platforms',
-                desc: 'Seamlessly connected with 50+ major advertising platforms and data sources for unified cross-channel campaign management.',
-                delay: 0.35,
+                title: 'Deep Integration',
+                stat: '50+', statLabel: 'Platforms',
+                desc: 'One dashboard to manage every channel — from Google and Meta to programmatic DSPs and DOOH.',
+                delay: 0.2,
               },
             ].map((card) => (
               <motion.div
                 key={card.title}
-                className="group bg-[#0f0f0f] border border-gray-800/60 rounded-2xl p-6 hover:border-[#F05A28]/30 hover:shadow-[0_0_24px_rgba(240,90,40,0.08)] transition-all duration-300"
+                className="group bg-[#0f0f0f] border border-gray-800/60 rounded-2xl p-6 hover:border-[#F05A28]/25 hover:shadow-[0_0_24px_rgba(240,90,40,0.07)] transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.45, delay: card.delay }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.4, delay: card.delay }}
               >
                 <div className="flex items-start justify-between mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#F05A28]/15 to-[#8E2DE2]/15 border border-[#F05A28]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#F05A28]/12 to-[#8E2DE2]/12 border border-[#F05A28]/18 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <card.icon className="w-5 h-5 text-[#F05A28]" />
                   </div>
                   <div className="text-right">
@@ -461,7 +502,7 @@ export default function Home() {
                     <div className="text-gray-600 text-xs uppercase tracking-wide">{card.statLabel}</div>
                   </div>
                 </div>
-                <h3 className="text-base font-bold text-white mb-2">{card.title}</h3>
+                <h3 className="text-sm font-bold text-white mb-2">{card.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
