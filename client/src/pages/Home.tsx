@@ -6,42 +6,229 @@ import {
   ArrowRight, CheckCircle, Mail,
 } from 'lucide-react';
 
-// ─── Animated counter ────────────────────────────────────────────────────────
-function AnimatedStat({
-  value,
-  suffix = '',
-  label,
-}: {
-  value: number;
-  suffix?: string;
-  label: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-50px' });
-  const [count, setCount] = useState(0);
+// ─── Live Auction Feed data ───────────────────────────────────────────────────
+const AD_PLATFORMS = [
+  { code: 'GGL', name: 'Google',        color: '#4285F4' },
+  { code: 'MTA', name: 'Meta',          color: '#1877F2' },
+  { code: 'TTK', name: 'TikTok',        color: '#FF0050' },
+  { code: 'LKD', name: 'LinkedIn',      color: '#0A66C2' },
+  { code: 'AMZ', name: 'Amazon',        color: '#FF9900' },
+  { code: 'DV3', name: 'DV360',         color: '#669DF6' },
+  { code: 'TTD', name: 'Trade Desk',    color: '#00BC8C' },
+  { code: 'XDR', name: 'Xandr',         color: '#8E2DE2' },
+];
+const AD_CAMPAIGNS = [
+  'Retarget · Cart Abandon',
+  'Prospecting · Lookalike',
+  'Brand Awareness · Video',
+  'Dynamic · Product Feed',
+  'DOOH · CBD Display',
+  'CTV · 15s Preroll',
+  'Native · Blog Traffic',
+  'Search · High Intent',
+  'Display · Contextual',
+  'Video · In-Stream',
+  'App Install · iOS',
+  'Remarketing · Upsell',
+];
+const BID_STATUSES = [
+  { label: 'WON',       color: '#22c55e', bg: 'rgba(34,197,94,0.12)'   },
+  { label: 'WON',       color: '#22c55e', bg: 'rgba(34,197,94,0.12)'   },
+  { label: 'OPTIMIZED', color: '#F05A28', bg: 'rgba(240,90,40,0.12)'   },
+  { label: 'BIDDING',   color: '#8E2DE2', bg: 'rgba(142,45,226,0.12)'  },
+];
+
+type BidEvent = {
+  id: number;
+  platform: typeof AD_PLATFORMS[0];
+  campaign: string;
+  cpm: string;
+  delta: string;
+  isUp: boolean;
+  status: typeof BID_STATUSES[0];
+  time: string;
+};
+
+let _bidId = 0;
+function makeBidEvent(): BidEvent {
+  const platform  = AD_PLATFORMS[Math.floor(Math.random() * AD_PLATFORMS.length)];
+  const campaign  = AD_CAMPAIGNS[Math.floor(Math.random() * AD_CAMPAIGNS.length)];
+  const cpm       = (Math.random() * 9 + 0.6).toFixed(2);
+  const pct       = Math.floor(Math.random() * 32 + 2);
+  const isUp      = Math.random() > 0.28;
+  const delta     = `${isUp ? '+' : '-'}${pct}%`;
+  const status    = BID_STATUSES[Math.floor(Math.random() * BID_STATUSES.length)];
+  const now       = new Date();
+  const time      = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+  return { id: _bidId++, platform, campaign, cpm, delta, isUp, status, time };
+}
+
+const SEED_EVENTS: BidEvent[] = Array.from({ length: 9 }, makeBidEvent);
+
+// ─── Live Auction Section ─────────────────────────────────────────────────────
+function LiveAuctionSection() {
+  const ref      = useRef<HTMLDivElement>(null);
+  const inView   = useInView(ref, { once: false, margin: '-100px' });
+  const [events, setEvents] = useState<BidEvent[]>(SEED_EVENTS);
+  const [auctionCount, setAuctionCount] = useState(47_284_391);
 
   useEffect(() => {
     if (!inView) return;
-    const duration = 2000;
-    const start = Date.now();
-    const timer = setInterval(() => {
-      const elapsed = Date.now() - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress >= 1) clearInterval(timer);
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, value]);
+    const interval = setInterval(() => {
+      setEvents(prev => [makeBidEvent(), ...prev].slice(0, 9));
+      setAuctionCount(c => c + Math.floor(Math.random() * 180 + 60));
+    }, 1300);
+    return () => clearInterval(interval);
+  }, [inView]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center justify-center py-8 px-4">
-      <span className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] font-[Montserrat] tabular-nums">
-        {count}{suffix}
-      </span>
-      <span className="text-gray-500 text-xs uppercase tracking-widest mt-2">{label}</span>
-    </div>
+    <section ref={ref} className="relative overflow-hidden bg-[#06060a] border-y border-gray-800/50">
+      {/* Scan-line texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-30"
+        style={{ backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.15) 3px,rgba(0,0,0,0.15) 4px)' }}
+      />
+      {/* Ambient glow */}
+      <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-[#8E2DE2]/6 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/5 w-[400px] h-[200px] bg-[#F05A28]/6 rounded-full blur-[80px] pointer-events-none" />
+
+      <div className="relative z-10 container mx-auto px-4 py-16 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+          {/* LEFT ── headline + metrics */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* System live badge */}
+            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-[#22c55e]/8 border border-[#22c55e]/25 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-60" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22c55e]" />
+              </span>
+              <span className="text-[#22c55e] text-xs font-mono tracking-[0.18em] uppercase">System Live</span>
+            </div>
+
+            {/* Headline */}
+            <h2 className="text-4xl md:text-5xl lg:text-[3.2rem] leading-[1.05] mb-4 text-white">
+              Every Bid Is<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
+                Smarter Than<br />The Last
+              </span>
+            </h2>
+            <p className="text-gray-500 text-sm leading-relaxed mb-10 max-w-md">
+              Copilot Ads processes millions of auction signals per second — adjusting bids,
+              reallocating budget, and cutting waste before the next impression fires.
+            </p>
+
+            {/* Live auction counter */}
+            <div className="mb-8 p-5 rounded-xl border border-gray-800/60 bg-[#0a0a0f]">
+              <div className="text-gray-500 text-[10px] font-mono tracking-[0.2em] uppercase mb-1.5">Auctions Won Today</div>
+              <div className="text-4xl lg:text-5xl font-mono font-bold text-white tabular-nums tracking-tight">
+                {auctionCount.toLocaleString()}
+              </div>
+              <div className="flex items-center gap-1.5 mt-2">
+                <span className="w-1 h-1 rounded-full bg-[#22c55e] animate-pulse" />
+                <span className="text-[#22c55e] text-[10px] font-mono tracking-widest">+{Math.floor(Math.random()*80+40)}/sec</span>
+              </div>
+            </div>
+
+            {/* Three small stats */}
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { val: '11ms',  label: 'Bid Latency'  },
+                { val: '50+',   label: 'DSP Partners'  },
+                { val: '99.8%', label: 'Uptime SLA'   },
+              ].map(({ val, label }) => (
+                <div key={label} className="rounded-xl border border-gray-800/50 bg-[#0a0a0f] p-4 text-center">
+                  <div className="text-xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] tabular-nums">{val}</div>
+                  <div className="text-gray-600 text-[10px] mt-1 leading-tight font-mono uppercase tracking-wider">{label}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* RIGHT ── live bid feed */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="rounded-2xl border border-gray-800/60 bg-[#08080e] overflow-hidden shadow-[0_0_60px_rgba(142,45,226,0.07)]"
+          >
+            {/* Feed header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-800/60 bg-[#0d0d14]">
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#22c55e]" />
+                </span>
+                <span className="text-gray-400 text-[10px] font-mono tracking-[0.2em] uppercase">Copilot Ads · Auction Stream</span>
+              </div>
+              <span className="text-[#22c55e] text-[10px] font-mono tracking-widest">LIVE</span>
+            </div>
+
+            {/* Column labels */}
+            <div className="grid grid-cols-[44px_1fr_52px_48px_78px] gap-2 px-5 py-2 border-b border-gray-800/30">
+              {['DSP','CAMPAIGN','CPM','ΔROAS','STATUS'].map(h => (
+                <span key={h} className="text-gray-700 text-[9px] font-mono uppercase tracking-wider truncate">{h}</span>
+              ))}
+            </div>
+
+            {/* Rows */}
+            <div className="overflow-hidden">
+              <AnimatePresence initial={false}>
+                {events.map((ev, i) => (
+                  <motion.div
+                    key={ev.id}
+                    initial={{ opacity: 0, y: -28, backgroundColor: 'rgba(240,90,40,0.07)' }}
+                    animate={{ opacity: Math.max(1 - i * 0.095, 0.15), y: 0, backgroundColor: 'rgba(0,0,0,0)' }}
+                    exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                    transition={{ duration: 0.32, ease: 'easeOut' }}
+                    className="grid grid-cols-[44px_1fr_52px_48px_78px] gap-2 px-5 py-2.5 items-center border-b border-gray-800/20 last:border-0"
+                  >
+                    {/* Platform */}
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: ev.platform.color }} />
+                      <span className="text-[9px] font-mono text-gray-500 truncate">{ev.platform.code}</span>
+                    </div>
+
+                    {/* Campaign */}
+                    <span className="text-[11px] font-mono text-gray-300 truncate">{ev.campaign}</span>
+
+                    {/* CPM */}
+                    <span className="text-[11px] font-mono text-white tabular-nums">${ev.cpm}</span>
+
+                    {/* Delta */}
+                    <span className={`text-[11px] font-mono tabular-nums ${ev.isUp ? 'text-[#22c55e]' : 'text-red-400'}`}>
+                      {ev.isUp ? '▲' : '▼'} {ev.delta}
+                    </span>
+
+                    {/* Status chip */}
+                    <span
+                      className="text-[9px] font-mono px-2 py-0.5 rounded-full text-center whitespace-nowrap"
+                      style={{ color: ev.status.color, backgroundColor: ev.status.bg }}
+                    >
+                      {ev.status.label}
+                    </span>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {/* Footer ticker */}
+            <div className="border-t border-gray-800/40 px-5 py-2.5 bg-[#0d0d14] flex items-center gap-3">
+              <span className="text-gray-700 text-[9px] font-mono uppercase tracking-widest">Powered by</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2] text-[10px] font-mono font-bold tracking-wider">COPILOT ADS ENGINE</span>
+              <span className="ml-auto text-gray-700 text-[9px] font-mono">v4.1.2</span>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -213,17 +400,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Stats bar ─────────────────────────────────────────────────────── */}
-      <section className="border-y border-gray-800/60 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-800/50">
-            <AnimatedStat value={50}  suffix="+"  label="Ad Platforms" />
-            <AnimatedStat value={95}  suffix="%"  label="Targeting Accuracy" />
-            <AnimatedStat value={40}  suffix="%"  label="Higher Conversions" />
-            <AnimatedStat value={100} suffix="+"  label="Campaigns Managed" />
-          </div>
-        </div>
-      </section>
+      {/* ── Live Auction Feed ─────────────────────────────────────────────── */}
+      <LiveAuctionSection />
 
       {/* ── Services ──────────────────────────────────────────────────────── */}
       <section id="services" className="py-24 bg-[#0f0f0f]">
