@@ -22,6 +22,9 @@ export default defineConfig({
     },
   },
   root: path.resolve(__dirname, "client"),
+  define: {
+    __BUILD_ID__: JSON.stringify(Date.now()),
+  },
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
