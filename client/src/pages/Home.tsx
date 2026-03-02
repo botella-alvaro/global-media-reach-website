@@ -296,175 +296,177 @@ export default function Home() {
 
       {/* ── Technology ────────────────────────────────────────────────────── */}
       <section id="technology" className="py-24 bg-[#0D0D0D] relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.075)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20" />
-        <div className="absolute top-20 right-20 w-96 h-96 bg-[#8E2DE2]/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#F05A28]/10 rounded-full blur-[100px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:22px_22px] opacity-70 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8E2DE2]/8 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#F05A28]/8 rounded-full blur-[110px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Header */}
+          <motion.div
+            className="text-center mb-14"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.5 }}
+          >
             <span className="inline-block mb-3 px-4 py-1 bg-[#3D2A55] rounded-full text-sm font-medium text-[#F05A28]">
               Our Technology
             </span>
             <h2 className="font-bold text-4xl md:text-5xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
               AdBid: Proprietary Platform
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Our data-driven technology platform delivers superior performance through advanced targeting and real-time optimization.
             </p>
-          </div>
+          </motion.div>
 
-          {/* AdBid Platform - Radial Layout */}
-          <div className="relative">
-            {/* Central Node */}
-            <div className="flex justify-center mb-16 md:mb-40">
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.5 }}
-              >
-                <motion.div
-                  className="absolute -inset-3 rounded-full"
-                  style={{ background: 'linear-gradient(90deg, #F05A28, #8E2DE2)' }}
-                  animate={{ opacity: [0.6, 0.8, 0.6], scale: [0.98, 1.02, 0.98] }}
-                  transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse' }}
-                />
-                <motion.div
-                  className="absolute -inset-1.5 rounded-full"
-                  style={{ background: 'linear-gradient(90deg, #F05A28, #8E2DE2)' }}
-                  animate={{ opacity: [0.7, 0.9, 0.7], scale: [0.99, 1.01, 0.99] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse', delay: 0.5 }}
-                />
-                <div className="w-36 h-36 md:w-48 md:h-48 bg-[#0A0A0A] rounded-full flex flex-col items-center justify-center p-4 border border-[#333] z-20 relative">
+          {/* ── Main AdBid showcase card ── */}
+          <motion.div
+            className="mb-6 rounded-2xl border border-gray-800/60 overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            <div className="flex flex-col md:flex-row">
+
+              {/* Left – animated AdBid badge (fully contained) */}
+              <div className="md:w-2/5 p-10 flex flex-col items-center justify-center bg-[#0f0f0f] border-b md:border-b-0 md:border-r border-gray-800/60">
+                {/* Ring container – fixed size so nothing bleeds */}
+                <div className="relative w-44 h-44 flex items-center justify-center mb-6 flex-shrink-0">
+                  {/* Outer rotating conic ring */}
                   <motion.div
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'conic-gradient(from 0deg, #F05A28, #8E2DE2, #F05A28)' }}
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-2 rounded-full opacity-20"
-                    style={{ background: 'conic-gradient(from 90deg, #F05A28, #8E2DE2, #F05A28)' }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
                   />
+                  {/* Mask to create ring effect */}
+                  <div className="absolute inset-[3px] rounded-full bg-[#0f0f0f]" />
+                  {/* Inner slow counter-rotate */}
                   <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                  >
-                    <Zap className="text-[#F05A28] mb-2 w-10 h-10" />
-                  </motion.div>
-                  <h3 className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
-                    AdBid
-                  </h3>
-                  <p className="text-sm text-white mt-1 font-medium">AI-Powered Platform</p>
-                  <div className="flex space-x-1.5 mt-3">
-                    {[0, 0.5, 1].map((delay, idx) => (
-                      <motion.div
-                        key={idx}
-                        className={`w-2 h-2 rounded-full ${idx === 1 ? 'bg-[#8E2DE2]' : 'bg-[#F05A28]'}`}
-                        animate={{ opacity: [0.4, 1, 0.4] }}
-                        transition={{ duration: 1.5, repeat: Infinity, delay }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Cards grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
-              {/* Connector lines – desktop only */}
-              <div className="hidden md:block absolute inset-0 z-0">
-                <motion.div
-                  className="absolute left-1/2 top-0 w-px h-24 -translate-x-1/2 -translate-y-32"
-                  style={{ background: 'linear-gradient(to top, transparent, rgba(240, 90, 40, 0.6))' }}
-                  initial={{ height: 0, opacity: 0 }}
-                  whileInView={{ height: 96, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                />
-                <motion.div
-                  className="absolute left-[16.6%] top-0 transform -translate-y-16 -rotate-45"
-                  style={{ height: '1px', width: '160px', background: 'linear-gradient(to left, transparent, rgba(142, 45, 226, 0.6))', transformOrigin: 'center right' }}
-                  initial={{ width: 0, opacity: 0 }}
-                  whileInView={{ width: 160, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                />
-                <motion.div
-                  className="absolute right-[16.6%] top-0 transform -translate-y-16 rotate-45"
-                  style={{ height: '1px', width: '160px', background: 'linear-gradient(to right, transparent, rgba(240, 90, 40, 0.6))', transformOrigin: 'center left' }}
-                  initial={{ width: 0, opacity: 0 }}
-                  whileInView={{ width: 160, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                />
-              </div>
-
-              {[
-                {
-                  icon: Target,
-                  accentClass: 'from-[#F05A28] to-[#8E2DE2]',
-                  borderHover: 'group-hover:border-[#F05A28]',
-                  shadowHover: 'group-hover:shadow-[0_0_25px_rgba(240,90,40,0.15)]',
-                  iconColor: 'text-[#F05A28]',
-                  title: 'Precision',
-                  short: 'Targeting accuracy up to 95% with AI-driven optimization',
-                  detail: 'Advanced algorithms analyze countless data points in real-time to deliver highly precise targeting, resulting in up to 95% accuracy. This precision dramatically increases engagement and conversion rates while reducing wasteful ad spend.',
-                  delay: 0.2,
-                },
-                {
-                  icon: Zap,
-                  accentClass: 'from-[#8E2DE2] to-[#4a00e0]',
-                  borderHover: 'group-hover:border-[#8E2DE2]',
-                  shadowHover: 'group-hover:shadow-[0_0_25px_rgba(142,45,226,0.15)]',
-                  iconColor: 'text-[#8E2DE2]',
-                  title: 'Performance',
-                  short: '40% higher conversion rates compared to traditional platforms',
-                  detail: 'Our platform outperforms traditional advertising solutions by leveraging machine learning to continuously optimize campaigns in real-time. This dynamic approach results in conversion rates that average 40% higher than industry standards.',
-                  delay: 0.3,
-                },
-                {
-                  icon: Database,
-                  accentClass: 'from-[#F05A28] to-[#8E2DE2]',
-                  borderHover: 'group-hover:border-[#F05A28]',
-                  shadowHover: 'group-hover:shadow-[0_0_25px_rgba(240,90,40,0.15)]',
-                  iconColor: 'text-[#F05A28]',
-                  title: 'Integration',
-                  short: 'Seamless connection with 50+ major ad platforms and data sources',
-                  detail: 'AdBid connects seamlessly with over 50 major advertising platforms, analytics tools, and data sources. This extensive integration capability enables unified campaign management and comprehensive cross-platform data analysis within a single interface.',
-                  delay: 0.4,
-                },
-              ].map((card) => (
-                <motion.div
-                  key={card.title}
-                  className="relative group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: card.delay, duration: 0.5 }}
-                >
-                  <div className={`bg-[#111] rounded-2xl overflow-hidden h-full transition-all duration-300 ${card.shadowHover} border border-gray-800 ${card.borderHover}`}>
-                    <div className="p-6 h-full flex flex-col relative group-hover:-translate-y-5 transition-transform duration-300">
-                      <div className={`bg-gradient-to-br ${card.accentClass} w-16 h-16 rounded-xl flex items-center justify-center mb-5 group-hover:animate-pulse transition-all duration-300`}>
-                        <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.7 }}>
-                          <card.icon className="w-8 h-8 text-white" />
-                        </motion.div>
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
-                      <p className="text-[#F0F0F0] text-sm">{card.short}</p>
-
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-black/90 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl">
-                        <card.icon className={`w-10 h-10 ${card.iconColor} mb-4`} />
-                        <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
-                        <p className="text-[#F0F0F0] text-sm text-center">{card.detail}</p>
-                      </div>
+                    className="absolute inset-[10px] rounded-full opacity-20"
+                    style={{ background: 'conic-gradient(from 180deg, #8E2DE2, #F05A28, #8E2DE2)' }}
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+                  />
+                  {/* Center content */}
+                  <div className="relative z-10 flex flex-col items-center justify-center">
+                    <Zap className="text-[#F05A28] w-9 h-9 mb-1" />
+                    <span className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
+                      AdBid
+                    </span>
+                    <div className="flex gap-1.5 mt-2">
+                      {[0, 0.5, 1].map((d, i) => (
+                        <motion.div
+                          key={i}
+                          className={`w-1.5 h-1.5 rounded-full ${i === 1 ? 'bg-[#8E2DE2]' : 'bg-[#F05A28]'}`}
+                          animate={{ opacity: [0.3, 1, 0.3] }}
+                          transition={{ duration: 1.5, repeat: Infinity, delay: d }}
+                        />
+                      ))}
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                </div>
+                <p className="text-gray-500 text-sm text-center">AI-Powered Advertising Platform</p>
+              </div>
+
+              {/* Right – details */}
+              <div className="md:w-3/5 p-10 bg-[#0a0a0a]">
+                <h3 className="text-2xl font-bold text-white mb-3">Intelligent Real-Time Bidding</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                  AdBid processes billions of signals per second to place the right ad, at the right time, to the right person — across every major digital channel.
+                </p>
+
+                {/* Inline stat pills */}
+                <div className="grid grid-cols-3 gap-3 mb-8">
+                  {[
+                    { value: '95%', label: 'Accuracy' },
+                    { value: '40%', label: 'Higher CVR' },
+                    { value: '50+', label: 'Platforms' },
+                  ].map((s) => (
+                    <div key={s.label} className="bg-[#111] border border-gray-800/60 rounded-xl p-4 text-center">
+                      <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
+                        {s.value}
+                      </div>
+                      <div className="text-gray-600 text-xs mt-0.5 uppercase tracking-wide">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Feature list */}
+                <div className="space-y-2.5">
+                  {[
+                    'Real-time bid optimization every millisecond',
+                    'Cross-channel unified attribution',
+                    'Predictive audience modeling with ML',
+                  ].map((feat) => (
+                    <div key={feat} className="flex items-center gap-3 text-sm text-gray-400">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#F05A28] to-[#8E2DE2] flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-3 h-3 text-white" />
+                      </div>
+                      {feat}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
             </div>
+          </motion.div>
+
+          {/* ── Feature cards – simple, no absolute tricks ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                icon: Target,
+                title: 'Precision',
+                stat: '95%',
+                statLabel: 'Targeting Accuracy',
+                desc: 'Advanced algorithms analyze countless data points in real-time, delivering up to 95% targeting accuracy and dramatically reducing wasted ad spend.',
+                delay: 0.15,
+              },
+              {
+                icon: Zap,
+                title: 'Performance',
+                stat: '40%',
+                statLabel: 'Higher Conversions',
+                desc: 'Machine learning continuously optimizes campaigns in real-time, producing conversion rates that average 40% above industry standards.',
+                delay: 0.25,
+              },
+              {
+                icon: Database,
+                title: 'Integration',
+                stat: '50+',
+                statLabel: 'Connected Platforms',
+                desc: 'Seamlessly connected with 50+ major advertising platforms and data sources for unified cross-channel campaign management.',
+                delay: 0.35,
+              },
+            ].map((card) => (
+              <motion.div
+                key={card.title}
+                className="group bg-[#0f0f0f] border border-gray-800/60 rounded-2xl p-6 hover:border-[#F05A28]/30 hover:shadow-[0_0_24px_rgba(240,90,40,0.08)] transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.45, delay: card.delay }}
+              >
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#F05A28]/15 to-[#8E2DE2]/15 border border-[#F05A28]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <card.icon className="w-5 h-5 text-[#F05A28]" />
+                  </div>
+                  <div className="text-right">
+                    <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#F05A28] to-[#8E2DE2]">
+                      {card.stat}
+                    </div>
+                    <div className="text-gray-600 text-xs uppercase tracking-wide">{card.statLabel}</div>
+                  </div>
+                </div>
+                <h3 className="text-base font-bold text-white mb-2">{card.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
           </div>
+
         </div>
       </section>
 
